@@ -5,17 +5,12 @@
 """
 
 
-
-
 import pickle
 import numpy
 import matplotlib.pyplot as plt
 import sys
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
-
-
-
 
 def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature 1", f2_name="feature 2"):
     """ some plotting code designed to help you visualize your clusters """
@@ -43,7 +38,6 @@ data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r")
 ### there's an outlier--remove it!
 data_dict.pop("TOTAL", 0)
 
-
 ### the input features we want to use
 ### can be any key in the person-level dictionary (salary, director_fees, etc.)
 feature_1 = "salary"
@@ -64,8 +58,10 @@ plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
-
-
+from sklearn.cluster import KMeans
+clf = KMeans()
+# clf.fit(finance_features)
+pred = clf.fit_predict(data)
 
 
 ### rename the "name" parameter when you change the number of features
